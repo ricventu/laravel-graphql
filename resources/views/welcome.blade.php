@@ -48,6 +48,10 @@
                 font-size: 84px;
             }
 
+            .links {
+                margin-bottom: 20px;
+            }
+
             .links > a {
                 color: #636b6f;
                 padding: 0 25px;
@@ -84,6 +88,9 @@
                     Laravel
                 </div>
 
+                <div class="links">
+                    <a href="{{ route('graphql-playground') }}">Graphql Playground</a>
+                </div>
                 <div class="links">
                     <a href="https://laravel.com/docs">Docs</a>
                     <a href="https://laracasts.com">Laracasts</a>
