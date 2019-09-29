@@ -26,6 +26,23 @@ type UserRole {
 }
 
 type Mutation {
-    createUser(name: String!): User! @create
+    createUser(name: String!, email: String!, password: String!): User! @create
+    updateUser(id: ID!, name: String, email: String, password: String): User @update
+    deleteUser(id: ID!): User @delete
+
     createUserRole(name: String!): UserRole! @create
+    updateUserRole(input: UpdateUserRoleInput! @spread): UserRole @update
+    deleteUserRole(id: ID!): UserRole @delete
+}
+
+input UpdateUserRoleInput {
+    id: ID!
+    name: String
+    users: UpdateUserRelation
+}
+
+input UpdateUserRelation {
+    connect: [ID!]
+    disconnect: [ID!]
+    sync: [ID!]
 }
