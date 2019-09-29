@@ -7,12 +7,25 @@ scalar Date @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Date")
 type Query {
     users: [User!]! @paginate(type: "paginator" model: "App\\User")
     user(id: ID @eq): User @find(model: "App\\User")
+    roles: [UserRole!]! @all
 }
 
 type User {
     id: ID!
     name: String!
     email: String!
+    roles: [UserRole!] @belongsToMany
     created_at: DateTime!
     updated_at: DateTime!
+}
+
+type UserRole {
+    id: ID!
+    name: String!
+    users: [User!] @belongsToMany
+}
+
+type Mutation {
+    createUser(name: String!): User! @create
+    createUserRole(name: String!): UserRole! @create
 }
