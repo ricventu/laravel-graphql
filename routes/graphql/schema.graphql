@@ -26,8 +26,8 @@ type UserRole {
 }
 
 type Mutation {
-    createUser(name: String!, email: String!, password: String!): User! @create
-    updateUser(id: ID!, name: String, email: String, password: String): User @update
+    createUser(name: String!, email: String! @rules(apply: ["email"]), password: String!): User! @create
+    updateUser(id: ID!, name: String, email: String @rules(apply: ["email"]), password: String): User @update
     deleteUser(id: ID!): User @delete
 
     createUserRole(name: String!): UserRole! @create
